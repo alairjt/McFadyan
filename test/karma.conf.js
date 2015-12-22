@@ -22,7 +22,6 @@ module.exports = function (config) {
             // bower:js
             'bower_components/jquery/dist/jquery.js',
             'bower_components/angular/angular.js',
-            'bower_components/oclazyload/dist/ocLazyLoad.js',
             'bower_components/angular-animate/angular-animate.js',
             'bower_components/angular-cookies/angular-cookies.js',
             'bower_components/angular-resource/angular-resource.js',
@@ -42,13 +41,10 @@ module.exports = function (config) {
             'bower_components/angular-ui-utils/index.js',
             'bower_components/angular-translate/angular-translate.js',
             'bower_components/angular-translate-loader-partial/angular-translate-loader-partial.js',
+            'bower_components/bootstrap/dist/js/bootstrap.js',
             'bower_components/flow.js/dist/flow.js',
             'bower_components/ng-flow/dist/ng-flow.js',
             'bower_components/angular-base64/angular-base64.js',
-            'bower_components/angular-material/angular-material.js',
-            'bower_components/material-design-lite/material.min.js',
-            'bower_components/angular-material-icons/angular-material-icons.min.js',
-            'bower_components/angular-material-data-table/dist/md-data-table.min.js',
             'bower_components/angular-mocks/angular-mocks.js',
             // endbower
             "src/app/app.js",

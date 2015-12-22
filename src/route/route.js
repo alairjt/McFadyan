@@ -9,23 +9,30 @@
 
     function Route($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/');
-        $stateProvider.state('home', {
-            url: '/',
-            views: {
-                'content@': {
-                    templateUrl: 'home/home.tpl.html',
-                    controller: 'HomeController',
-                    controllerAs: 'home'
-                },
-                'name@': {
-                    template: 'Dashboard'
+        $stateProvider
+            .state('home', {
+                url: '/',
+                views: {
+                    'content@': {
+                        templateUrl: 'home/home.tpl.html',
+                        controller: 'HomeController',
+                        controllerAs: 'vm'
+                    },
+                    'name@': {
+                        template: 'Dashboard'
+                    }
                 }
-            },
-            data: {
-                displayMenu: true,
-                displayName: 'Dashboard',
-                operacoes: []
-            }
-        });
+            })
+            .state('home.register', {
+                url: 'register',
+                views: {
+                    'content@': {
+                        templateUrl: 'register/register.tpl.html',
+                        controller: 'RegisterController',
+                        controllerAs: 'vm'
+                    }
+                }
+            })
+            ;
     }
 })();

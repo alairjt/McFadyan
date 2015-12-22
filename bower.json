@@ -1,10 +1,9 @@
 {
-  "name": "gestao-plataforma-financeira",
+  "name": "mcfadyan",
   "version": "0.0.1",
   "dependencies": {
     "jquery": "~2.1.4",
     "angular": "^1.4.8",
-    "oclazyload": "ocLazyLoad#~1.0.9",
     "angular-animate": "^1.4.8",
     "angular-cookies": "^1.4.8",
     "angular-resource": "^1.4.8",
@@ -17,12 +16,9 @@
     "angular-ui-utils": "^3.0.0",
     "angular-translate": "^2.8.1",
     "angular-translate-loader-partial": "^2.8.1",
+    "bootstrap": "3.3.4",
     "ng-flow": "^2.6.1",
-    "angular-base64": "^2.0.5",
-    "angular-material": "~0.11.4",
-    "material-design-lite": "~1.0.6",
-    "angular-material-icons": "~0.6.0",
-    "angular-material-data-table": "^0.8.14"
+    "angular-base64": "^2.0.5"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"

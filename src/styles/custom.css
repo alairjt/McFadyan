@@ -1,36 +1,162 @@
-.md-toggle-icon {
+html {
+    margin: 0;
+    padding: 0;    
+}
+body {
+    background: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)), url("../images/faces.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+   font-family: 'Lato', sans-serif;
+}
+.no-space {margin:0 auto; padding: 0 auto;}
+.m-right20 {margin-right: 20px}
+.mtop20 { margin-top: 20px; }
+.mtop30 { margin-top: 30px; }
+.mtop40 { margin-top: 40px; }
+.mtop50 { margin-top: 50px; }
+.mtop100 { margin-top: 100px; }
+.mbottom20 { margin-bottom: 20px; }
+.mbottom30 { margin-bottom: 30px; }
+.mbottom40 { margin-bottom: 40px; }
+.mbottom50 { margin-bottom: 50px; }
+.mtop5p { margin-top: 5%; }
+.mtop8p { margin-top: 8%; }
+.mtop10p { margin-top: 10%; }
+.mtop12p { margin-top: 12%; }
+.bg-transparent { background-color: transparent; }
+.bg-semi-transparent { background-color: rgba(0, 0, 0, 0.50); }
+.txt-white { color: #FFF; }
+.border-left-red { border-left: 1px solid rgb(198, 29, 29); min-height: 500px;}
+.border-right-red { border-right: 1px solid rgb(198, 29, 29); min-height: 500px;}
+.color-red { color: #FF5B5B;}
+.text-center {text-align: center;}
+/*generic rules from buttons - cover*/
+
+.btn {
+    background-image: none;
+    border: none;
+}
+.btn-large {
+    padding: 10px 50px;
+    font-size: 20px;
+}
+
+/* register button - used red color to match the macfayden logo and enticing a user to click as performed UX study
+more - http://blog.hubspot.com/blog/tabid/6307/bid/20566/The-Button-Color-A-B-Test-Red-Beats-Green.aspx */
+
+.btn-register {
+    background-color: #B00B1E;
+    font-weight: 600;
+    color: #FFFFFF;
+    text-shadow: none;
+}
+.btn-register:hover {
+    cursor: pointer;
+    background-color: #E61C34;
+    -webkit-transition: all ease .5s;
+    -o-transition: all ease .5s;
+    -moz-transition: all ease .5s;
+    -ms-transition: all ease .5s;
+    transition: all ease .5s;
+}
+span.btn-register:hover {
+    cursor: pointer;
+}
+.btn-register.active, .btn-register:active, .btn-register:focus, .btn-register.focus {
+    background-color: #E61C34 !important;
+    border: none;
+}
+
+/* IMAGE USER CSS */
+
+#preview {
+    background-color: #fff;
     display: block;
-    margin-left: auto;
-    speak: none;
-    vertical-align: middle;
-    transform: rotate(180deg);
-    -webkit-transform: rotate(180deg);
-    transition: transform 0.3s ease-in-out;
-    -webkit-transition: -webkit-transform 0.3s ease-in-out;
+    width: 150px;
+    border: 2px solid #FFF;
 }
-.md-toggle-icon.toggled {
-    transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
+#upload_form > div {
+    margin-bottom: 10px;
 }
-.menu-toggle-list {
-    padding: 0;
-    overflow: hidden;
+#b_transfered {
+    float: right;
+    text-align: right;
+}
+.clear_both {
+    clear: both;
+}
+#image_file {
+    width: 130px;
+    height: auto;
+    font-size: 14px;
+    margin: auto;
+}
+#fileinfo, #error, #error2, #abort, #warnsize {
+    color: #FF5B5B;
+    display: none;
+    font-size: 1em;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+/* input type file button css*/
+
+.fileinput-button {
     position: relative;
-    z-index: 1;
-    -webkit-transition: 0.75s cubic-bezier(0.35, 0, 0.25, 1);
-    -webkit-transition-property: height;
-    -moz-transition: 0.75s cubic-bezier(0.35, 0, 0.25, 1);
-    -moz-transition-property: height;
-    transition: 0.75s cubic-bezier(0.35, 0, 0.25, 1);
-    transition-property: height;
+    overflow: hidden;
 }
-.menu-toggle-list a.md-button {
-    display: block;
-    padding: 0 16px 0 0px;
-    text-transform: none;
-    text-rendering: optimizeLegibility;
-    font-weight: 500;
+.fileinput-button input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    opacity: 0;
+    -ms-filter: 'alpha(opacity=0)';
+    font-size: 200px;
+    direction: ltr;
+    cursor: pointer;
 }
-.active {
-    background-color: #60b078;
+#registerForm {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.help-block {font-size: 11px;}
+
+/* AGE SLIDE STATUS BAR*/
+.bs-wizard {margin-top: 10px;}
+
+/*Form Wizard*/
+.bs-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}
+.bs-wizard > .bs-wizard-step {padding: 0; position: relative;}
+.bs-wizard > .bs-wizard-step + .bs-wizard-step {}
+.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #FFF; font-size: 16px; margin-bottom: 5px;}
+.bs-wizard > .bs-wizard-step .bs-wizard-info {color: #FFF; font-size: 14px;}
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; display: block; background: #0099ff; top: 45px; left: 50%; margin-top: -15px; margin-left: -15px; border-radius: 50%;}
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 14px; height: 14px; background: #40b9fe; border-radius: 50px; position: absolute; top: 8px; left: 8px; }
+.bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 8px; box-shadow: none; margin: 20px 0;}
+.bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background: #0099ff;}
+.bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {width:100%;}
+.bs-wizard > .bs-wizard-step.active > .progress > .progress-bar {width:50%;}
+.bs-wizard > .bs-wizard-step:first-child.active > .progress > .progress-bar {width:0%;}
+.bs-wizard > .bs-wizard-step:last-child.active > .progress > .progress-bar {width: 100%;}
+.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot {background-color: #f5f5f5;}
+.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot:after {opacity: 0;}
+.bs-wizard > .bs-wizard-step:first-child  > .progress {left: 50%; width: 50%;}
+.bs-wizard > .bs-wizard-step:last-child  > .progress {width: 50%;}
+.bs-wizard > .bs-wizard-step.disabled a.bs-wizard-dot{ pointer-events: none; }
+/*END Form Wizard*/
+
+
+/*SELECTIZE TAGS INTERESTS*/
+.selectize-control.multi .selectize-input [data-value] {background-color: #0099ff; background-image: none;}
+.selectize-control.multi .selectize-input > div {
+    cursor: pointer;
+    margin: 0 3px 3px 0;
+    padding: 2px 6px;
+    background: #1da7ee;
+    color: #ffffff;
+    border: 1px solid #0073bb;
 }
