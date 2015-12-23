@@ -12,13 +12,11 @@
                         <div class="row mbottom30">
                             <img ng-src="{{vm.getProfileImage()}}" id="preview" class="center-block img-circle img-fluid m-y">
                         </div>
-                        <div id="error">
-                            <i class="fa fa-exclamation-triangle"></i> You should select valid image. Only bmp, gif, jpg and png files is accepted.
+                        <div class="text-center mtop20">
+                            <span class="btn btn-register fileinput-button">
+                                <button type="button" ng-disabled="upload_form.$invalid" ng-click="vm.edit()" class="btn btn-xs btn-register"><i class="glyphicon glyphicon-check"></i> Edit profile</button>
+                            </span>
                         </div>
-                        <div id="warnsize">
-                            <i class="fa fa-exclamation-triangle"></i> Your file is very big. Please select with maximum 1MB file.
-                        </div>
-                        <div id="upload_response"></div>
                     </div>
                     <div class="col-md-1"></div>
                     <div class="col-md-8 no-space">

@@ -2,13 +2,13 @@
     'use strict';
     /**
      * @ngdoc overview
-     * @name nxApp
+     * @name app
      * @description
-     * # nxApp
+     * # app
      *
      * Main module of the application.
      */
-    angular.module('nxApp', [
+    angular.module('app', [
         'ngAnimate',
         'ngCookies',
         'ngResource',

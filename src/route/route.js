@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('nxApp')
+    angular.module('app')
 
     .config(Route);
 

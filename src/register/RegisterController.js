@@ -3,12 +3,12 @@
 
     /**
      * @ngdoc function
-     * @name nxApp.register:RegisterController
+     * @name app.register:RegisterController
      * @description
      * # HomeCtrl
-     * Controller of the nxApp
+     * Controller of the app
      */
-    angular.module('nxApp')
+    angular.module('app')
 
     .controller('RegisterController', RegisterController);
 
@@ -17,7 +17,7 @@
     function RegisterController($scope, $base64, $state, RegisterData) {
         var vm = this;
         
-        vm.data = {};
+        vm.data = RegisterData.data || {};
         
         vm.getProfileImage = function () {
             return vm.data.file ? "data:image/png;base64,".concat(vm.data.file) : 'images/user_placeholder.png';

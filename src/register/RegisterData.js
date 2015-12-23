@@ -1,5 +1,5 @@
 (function () {
-    angular.module('nxApp')
+    angular.module('app')
             .factory('RegisterData', RegisterData);
     
     function RegisterData() {

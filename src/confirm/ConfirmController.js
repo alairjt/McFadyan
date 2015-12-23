@@ -3,12 +3,12 @@
 
     /**
      * @ngdoc function
-     * @name nxApp.register:RegisterController
+     * @name app.register:RegisterController
      * @description
      * # HomeCtrl
-     * Controller of the nxApp
+     * Controller of the app
      */
-    angular.module('nxApp')
+    angular.module('app')
 
     .controller('ConfirmController', ConfirmController);
 
@@ -22,6 +22,10 @@
         }
 
         vm.data = RegisterData.data;
+        
+        vm.edit = function () {
+            $state.go('home.register');
+        };
         
         vm.getProfileImage = function () {
             return vm.data.file ? "data:image/png;base64,".concat(vm.data.file) : 'images/user_placeholder.png';

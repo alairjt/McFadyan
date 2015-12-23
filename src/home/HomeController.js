@@ -3,12 +3,12 @@
 
     /**
      * @ngdoc function
-     * @name nxApp.home:HomeController
+     * @name app.home:HomeController
      * @description
      * # HomeCtrl
-     * Controller of the nxApp
+     * Controller of the app
      */
-    angular.module('nxApp')
+    angular.module('app')
 
     .controller('HomeController', HomeController);
 
