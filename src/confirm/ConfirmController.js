@@ -12,12 +12,16 @@
 
     .controller('ConfirmController', ConfirmController);
 
-    ConfirmController.$inject = [];
+    ConfirmController.$inject = ['$scope', 'RegisterData', '$state'];
 
-    function ConfirmController() {
+    function ConfirmController($scope, RegisterData, $state) {
         var vm = this;
-        
-        vm.data = {};
+
+        if (!RegisterData.data) {
+            $state.go('home.register');
+        }
+
+        vm.data = RegisterData.data;
         
         vm.getProfileImage = function () {
             return vm.data.file ? "data:image/png;base64,".concat(vm.data.file) : 'images/user_placeholder.png';

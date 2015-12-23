@@ -12,9 +12,9 @@
 
     .controller('RegisterController', RegisterController);
 
-    RegisterController.$inject = ['$scope', '$base64'];
+    RegisterController.$inject = ['$scope', '$base64', '$state', 'RegisterData'];
 
-    function RegisterController($scope, $base64) {
+    function RegisterController($scope, $base64, $state, RegisterData) {
         var vm = this;
         
         vm.data = {};
@@ -32,7 +32,8 @@
         };
         
         vm.submit = function (data) {
-            console.log(data);
+            RegisterData.save(data);
+            $state.go('home.confirm');
         };
 
         $scope.fileChanged = function(element) {

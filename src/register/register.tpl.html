@@ -139,7 +139,7 @@
                                 <label for="country" class="sr-only">Country</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></div>
-                                    <select id="country" name="country" ng-model="vm.data.contry" class="form-control select select-primary select-block"></select>
+                                    <select id="country" name="country" ng-model="vm.data.country" class="form-control select select-primary select-block"></select>
                                 </div>
                             </div>
                         </div>
@@ -167,13 +167,13 @@
                                     </div>
                                     <select id="selectAddress" ng-model="vm.data.adress" name="adress" class="form-control select select-primary select-block">
                                         <option value="">Select Address...</option>
-                                        <option value="optHome">Home</option>
-                                        <option value="optCompany">Company</option>
+                                        <option value="home">Home</option>
+                                        <option value="company">Company</option>
                                     </select>
                                 </div>
                             </div>
                             <!-- The two Home Address -->
-                            <div id="addressHome" class="form-horizontal animated fadeInDown" style="display: none;">
+                            <div id="addressHome" class="form-horizontal animated fadeInDown" ng-if="vm.data.adress === 'home'">
                                 <div class="form-group">
                                     <label class="col-xs-4 control-label">1<sup>st</sup>&nbsp; Home Address:</label>
                                     <div class="col-xs-6">
@@ -188,7 +188,7 @@
                                 </div>
                             </div>
                             <!-- the two company address -->
-                            <div id="addressCompany" class="form-horizontal animated fadeInDown" style="display: none;">
+                            <div id="addressCompany" class="form-horizontal animated fadeInDown" ng-if="vm.data.adress === 'company'">
                                 <div class="form-group">
                                     <label class="col-xs-4 control-label">1<sup>st</sup>&nbsp; Company Address:</label>
                                     <div class="col-xs-6">
@@ -207,7 +207,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="interestsField" class="control-label"><i class="fa fa-tags"></i> Interests</label>
-                                <input type="text" id="interestsField" ng-model="vm.data.interests" class="input-tags" value="tv,read">
+                                <input type="text" id="interestsField" ng-model="vm.data.interests" class="input-tags">
                             </div>
                         </div>
                         <!-- CHECKBOX NEWSLETTER -->
@@ -219,10 +219,6 @@
                             </div>
                             <div class="row"></div>
                             <div class="form-group">
-                                <pre>
-                                    {{upload_form.$error}}
-                                    {{vm.data}}
-                                </pre>
                                 <button type="button" ng-disabled="upload_form.$invalid" ng-click="vm.submit(vm.data)" class="btn btn-large btn-register"><i class="glyphicon glyphicon-check"></i> Submit</button>
                             </div>
                         </div>
