@@ -1,4 +1,6 @@
-# gestao-plataforma-financeira
+## Install NODEJS / NPM
+
+Run `npm install && bower install` to install dependencies. 
 
 ## Build & development
 
