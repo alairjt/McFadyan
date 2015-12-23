@@ -22,6 +22,18 @@
         vm.getProfileImage = function () {
             return vm.data.file ? "data:image/png;base64,".concat(vm.data.file) : 'images/user_placeholder.png';
         };
+        
+        vm.checkAge = function (age) {
+            return vm.data.age >= age;
+        };
+        
+        vm.setAge = function (age) {
+            return vm.data.age = age;
+        };
+        
+        vm.submit = function (data) {
+            console.log(data);
+        };
 
         $scope.fileChanged = function(element) {
             if (element.files[0]) {

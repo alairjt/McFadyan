@@ -6,18 +6,16 @@
     <div class="col-md-8 animated fadeInUp">
         <div class="jumbotron  bg-semi-transparent txt-white">
             <div class="container">
-                <form id="upload_form" novalidate>
+                <form id="upload_form" name="upload_form" novalidate>
                     <div class="col-md-2">
                         <!-- used default method for this test. Using default browser method _GET -->
                         <div class="row mbottom30">
-                            <!--images/user_placeholder.png-->
                             <img ng-src="{{vm.getProfileImage()}}" id="preview" class="center-block img-circle img-fluid m-y">
                         </div>
                         <div class="text-center mtop20">
                             <span class="btn btn-register fileinput-button">
                                 <span>Upload your photo</span>
                                 <input ng-model="vm.image" value="'registerFile'" onchange="angular.element(this).scope().fileChanged(this);" type="file" accept="image/*" />
-                                <!--<input type="file" name="image_file" id="image_file" onchange="fileSelected();" />-->
                             </span>
                         </div>
                         <div id="error">
@@ -32,204 +30,223 @@
                     <div class="col-md-1"></div>
                     <div class="col-md-8 no-space">
                         <!-- <form id="taskForm" role="form" data-toggle="validator"action="registerConfirm.html"> -->
-                        <form id="registerForm" data-toggle="validator" role="form" action="confirm.html" onclick="validationName()">
-                            <div class="col-md-6">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="firstNameField" class="control-label">First Name</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <span class="glyphicon glyphicon-user"></span>
+                                    </div>
+                                    <input type="text" ng-model="vm.data.name" class="form-control" placeholder="Input Name" required ng-minlength="5" ng-maxlength="20"/>
+                                </div>
+                                <span class="help-block color-red"><i class="fa fa-asterisk"></i> Need Input a Name (5-20 letters)</span>
+                                <!-- <div id="nameError" class="alert" role="alert"></div> -->
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="lastNameField" class="control-label hidden-xs">Last Name</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <span class="glyphicon glyphicon-user"></span>
+                                    </div>
+                                    <input type="text" ng-model="vm.data.last_name" class="form-control" ng-required placeholder="Input Last Name"/>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- AGE RANGE -->
+                        <div class="col-md-12">
+                            <label class="hidden-xs"><i class="fa fa-calendar-check-o"></i> AGE</label>
+                            <div class="row bs-wizard hidden-xs" style="border-bottom:0;">
+                                <div class="col-xs-3 bs-wizard-step" ng-class="{'complete': vm.checkAge(13)}">
+                                    <div class="text-center bs-wizard-stepnum">13 - 19</div>
+                                    <div class="progress">
+                                        <div class="progress-bar"></div>
+                                    </div>
+                                    <a ng-click="vm.setAge(13)" class="bs-wizard-dot"></a>
+                                    <div class="bs-wizard-info text-center"></div>
+                                </div>
+                                <div class="col-xs-3 bs-wizard-step" ng-class="{'complete': vm.checkAge(20)}">
+                                    <!-- complete -->
+                                    <div class="text-center bs-wizard-stepnum">20 - 29</div>
+                                    <div class="progress">
+                                        <div class="progress-bar"></div>
+                                    </div>
+                                    <a ng-click="vm.setAge(20)" class="bs-wizard-dot"></a>
+                                    <div class="bs-wizard-info text-center"></div>
+                                </div>
+                                <div class="col-xs-3 bs-wizard-step" ng-class="{'complete': vm.checkAge(30)}">
+                                    <!-- complete -->
+                                    <div class="text-center bs-wizard-stepnum">30 - 45</div>
+                                    <div class="progress">
+                                        <div class="progress-bar"></div>
+                                    </div>
+                                    <a ng-click="vm.setAge(30)" class="bs-wizard-dot"></a>
+                                    <div class="bs-wizard-info text-center"></div>
+                                </div>
+                                <div class="col-xs-3 bs-wizard-step" ng-class="{'complete': vm.checkAge(45)}">
+                                    <!-- active -->
+                                    <div class="text-center bs-wizard-stepnum">45 & Above</div>
+                                    <div class="progress">
+                                        <div class="progress-bar"></div>
+                                    </div>
+                                    <a ng-click="vm.setAge(45)" class="bs-wizard-dot"></a>
+                                    <div class="bs-wizard-info text-center"></div>
+                                </div>
+                            </div>
+                            <!-- AGE FROM MOBILE AND SMALL SCREEN -->
+                            <div class="form-group hidden-sm hidden-md hidden-lg">
+                                <label class="control-label">Age</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar-check-o"></i>
+                                    </div>
+                                    <input type="text" ng-model="vm.data.age" class="form-control" id="ageField" required placeholder="Input your Age">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mbottom20"></div>
+                        <!-- EMAIL FIELD -->
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                <label for="inputEmail" class="control-label">Email</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">@</span>
+                                    <input type="email" class="form-control" ng-model="vm.data.email" id="inputEmail" placeholder="Input Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" data-error="That email address is invalid" required>
+                                </div>
+                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                <span class="help-block with-errors color-red"><i class="fa fa-asterisk"></i> Need input a valid email</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="phoneField" class="control-label">Phone</label>
+                            <div class="form-group">
+                                <label for="phoneField" class="sr-only">Phone</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <span class="glyphicon glyphicon-phone"></span>
+                                    </div>
+                                    <!-- Dont put pattern to phone number for free country format -->
+                                    <input type="text" ng-model="vm.data.phone" class="form-control" id="phoneField" placeholder="Input Phone">
+                                    <!-- <div id="phoneError" class="alert" role="alert"></div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row"></div>
+                        <div class="col-md-6">
+                            <label for="country" class="control-label">Country</label>
+                            <div class="form-group">
+                                <label for="country" class="sr-only">Country</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></div>
+                                    <select id="country" name="country" ng-model="vm.data.contry" class="form-control select select-primary select-block"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="state" class="control-label">State</label>
+                            <div class="form-group">
+                                <label for="state" class="sr-only">State</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="glyphicon glyphicon-map-marker"></i>
+                                    </div>
+                                    <select id="state" name="state" ng-model="vm.data.state" class="form-control select select-primary select-block"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row"></div>
+                        <!-- SELECT ADDRESS -->
+                        <div class="col-md-12">
+                            <label for="address" class="control-label">Adress</label>
+                            <div class="form-group">
+                                <label for="adress" class="sr-only">Adress</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="glyphicon glyphicon-map-marker"></i>
+                                    </div>
+                                    <select id="selectAddress" ng-model="vm.data.adress" name="adress" class="form-control select select-primary select-block">
+                                        <option value="">Select Address...</option>
+                                        <option value="optHome">Home</option>
+                                        <option value="optCompany">Company</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- The two Home Address -->
+                            <div id="addressHome" class="form-horizontal animated fadeInDown" style="display: none;">
                                 <div class="form-group">
-                                    <label for="firstNameField" class="control-label">First Name</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <span class="glyphicon glyphicon-user"></span>
-                                        </div>
-                                        <!-- <input type="text" class="form-control" id="firstNameField" required minlength="5"  maxlength="20"> -->
-                                        <input type="text" class="form-control" id="firstNameField" placeholder="Input Name" required minlength="5"  maxlength="20">
+                                    <label class="col-xs-4 control-label">1<sup>st</sup>&nbsp; Home Address:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" ng-model="vm.data.home" class="form-control" name="addressHome1" id="addressHome1" />
                                     </div>
-                                    <span class="help-block color-red"><i class="fa fa-asterisk"></i> Need Input a Name (5-20 letters)</span>
-                                    <!-- <div id="nameError" class="alert" role="alert"></div> -->
                                 </div>
-                            </div>
-                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="lastNameField" class="control-label hidden-xs">Last Name</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <span class="glyphicon glyphicon-user"></span>
-                                        </div>
-                                        <input type="text" class="form-control" id="lastNameField" required placeholder="Input Last Name">
+                                    <label class="col-xs-4 control-label">2<sup>nd</sup>&nbsp; Home Address:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" ng-model="vm.data.home2" class="form-control" name="addressHome2" id="addressHome2" />
                                     </div>
                                 </div>
                             </div>
-                            <!-- AGE RANGE -->
-                            <div class="col-md-12">
-                                <label for="ageField" class="hidden-xs"><i class="fa fa-calendar-check-o"></i> AGE</label>
-                                <div class="row bs-wizard hidden-xs" style="border-bottom:0;">
-                                    <div id="ageField" class="col-xs-3 bs-wizard-step complete">
-                                        <div class="text-center bs-wizard-stepnum">13 - 19</div>
-                                        <div class="progress">
-                                            <div class="progress-bar"></div>
-                                        </div>
-                                        <a href="#" class="bs-wizard-dot"></a>
-                                        <div class="bs-wizard-info text-center"></div>
-                                    </div>
-                                    <div id="ageField" class="col-xs-3 bs-wizard-step complete">
-                                        <!-- complete -->
-                                        <div class="text-center bs-wizard-stepnum">20 - 29</div>
-                                        <div class="progress">
-                                            <div class="progress-bar"></div>
-                                        </div>
-                                        <a href="#" class="bs-wizard-dot"></a>
-                                        <div class="bs-wizard-info text-center"></div>
-                                    </div>
-                                    <div id="ageField" class="col-xs-3 bs-wizard-step active">
-                                        <!-- complete -->
-                                        <div class="text-center bs-wizard-stepnum">30 - 45</div>
-                                        <div class="progress">
-                                            <div class="progress-bar"></div>
-                                        </div>
-                                        <a href="#" class="bs-wizard-dot"></a>
-                                        <div class="bs-wizard-info text-center"></div>
-                                    </div>
-                                    <div id="ageField" class="col-xs-3 bs-wizard-step disabled">
-                                        <!-- active -->
-                                        <div class="text-center bs-wizard-stepnum">45 & Above</div>
-                                        <div class="progress">
-                                            <div class="progress-bar"></div>
-                                        </div>
-                                        <a href="#" class="bs-wizard-dot"></a>
-                                        <div class="bs-wizard-info text-center"></div>
-                                    </div>
-                                </div>
-                                <!-- AGE FROM MOBILE AND SMALL SCREEN -->
-                                <div class="form-group hidden-sm hidden-md hidden-lg">
-                                    <label for="ageField" class="control-label">Age</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar-check-o"></i>
-                                        </div>
-                                        <input type="text" class="form-control" id="ageField" required placeholder="Input your Age">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mbottom20"></div>
-                            <!-- EMAIL FIELD -->
-                            <div class="col-md-6">
-                                <div class="form-group has-feedback">
-                                    <label for="inputEmail" class="control-label">Email</label>
-                                    <div class="input-group">
-                                        <span class="input-group-addon">@</span>
-                                        <input type="email" class="form-control" id="inputEmail" placeholder="Input Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" data-error="That email address is invalid" required>
-                                    </div>
-                                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                    <span class="help-block with-errors color-red"><i class="fa fa-asterisk"></i> Need input a valid email</span>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="phoneField" class="control-label">Phone</label>
+                            <!-- the two company address -->
+                            <div id="addressCompany" class="form-horizontal animated fadeInDown" style="display: none;">
                                 <div class="form-group">
-                                    <label for="phoneField" class="sr-only">Phone</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <span class="glyphicon glyphicon-phone"></span>
-                                        </div>
-                                        <!-- Dont put pattern to phone number for free country format -->
-                                        <input type="phone" class="form-control" id="phoneField" placeholder="Input Phone">
-                                        <!-- <div id="phoneError" class="alert" role="alert"></div> -->
+                                    <label class="col-xs-4 control-label">1<sup>st</sup>&nbsp; Company Address:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" ng-model="vm.data.company" class="form-control" name="addressCompany1" id="addressCompany1" />
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label class="col-xs-4 control-label">2<sup>nd</sup>&nbsp; Company Address:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" ng-model="vm.data.company2" class="form-control" name="addressCompany2" id="addressCompany2" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- SELECTIZE INTERESTS -->
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="interestsField" class="control-label"><i class="fa fa-tags"></i> Interests</label>
+                                <input type="text" id="interestsField" ng-model="vm.data.interests" class="input-tags" value="tv,read">
+                            </div>
+                        </div>
+                        <!-- CHECKBOX NEWSLETTER -->
+                        <div class="col-md-12">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="vm.data.subscribe"> Subscribe to the Newsletter
+                                </label>
                             </div>
                             <div class="row"></div>
-                            <div class="col-md-6">
-                                <label for="country" class="control-label">Country</label>
-                                <div class="form-group">
-                                    <label for="country" class="sr-only">Country</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></div>
-                                        <select id="country" name="country" class="form-control select select-primary select-block"></select>
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <pre>
+                                    {{upload_form.$error}}
+                                    {{vm.data}}
+                                </pre>
+                                <button type="button" ng-disabled="upload_form.$invalid" ng-click="vm.submit(vm.data)" class="btn btn-large btn-register"><i class="glyphicon glyphicon-check"></i> Submit</button>
                             </div>
-                            <div class="col-md-6">
-                                <label for="state" class="control-label">State</label>
-                                <div class="form-group">
-                                    <label for="state" class="sr-only">State</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="glyphicon glyphicon-map-marker"></i>
-                                        </div>
-                                        <select id="state" name="state" class="form-control select select-primary select-block"></select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row"></div>
-                            <!-- SELECT ADDRESS -->
-                            <div class="col-md-12">
-                                <label for="address" class="control-label">Adress</label>
-                                <div class="form-group">
-                                    <label for="adress" class="sr-only">Adress</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="glyphicon glyphicon-map-marker"></i>
-                                        </div>
-                                        <select id="selectAddress" name="adress" class="form-control select select-primary select-block">
-                                            <option value="">Select Address...</option>
-                                            <option value="optHome">Home</option>
-                                            <option value="optCompany">Company</option>
-
-                                        </select>
-                                    </div>
-                                </div>
-                                <!-- The two Home Address -->
-                                <div id="addressHome" class="form-horizontal animated fadeInDown" style="display: none;">
-                                    <div class="form-group">
-                                        <label class="col-xs-4 control-label">1<sup>st</sup>&nbsp; Home Address:</label>
-                                        <div class="col-xs-6">
-                                            <input type="text" class="form-control" name="addressHome1" id="addressHome1" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-xs-4 control-label">2<sup>nd</sup>&nbsp; Home Address:</label>
-                                        <div class="col-xs-6">
-                                            <input type="text" class="form-control" name="addressHome2" id="addressHome2" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- the two company address -->
-                                <div id="addressCompany" class="form-horizontal animated fadeInDown" style="display: none;">
-                                    <div class="form-group">
-                                        <label class="col-xs-4 control-label">1<sup>st</sup>&nbsp; Company Address:</label>
-                                        <div class="col-xs-6">
-                                            <input type="text" class="form-control" name="addressCompany1" id="addressCompany1" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-xs-4 control-label">2<sup>nd</sup>&nbsp; Company Address:</label>
-                                        <div class="col-xs-6">
-                                            <input type="text" class="form-control" name="addressCompany2" id="addressCompany2" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- SELECTIZE INTERESTS -->
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="interestsField" class="control-label"><i class="fa fa-tags"></i> Interests</label>
-                                    <input type="text" id="interestsField" class="input-tags" value="tv,read">
-                                </div>
-                            </div>
-                            <!-- CHECKBOX NEWSLETTER -->
-                            <div class="col-md-12">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Subscribe to the Newsletter
-                                    </label>
-                                </div>
-                                <div class="row"></div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-large btn-register"><i class="glyphicon glyphicon-check"></i> Submit</button>
-                                </div>
-                            </div>
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    populateCountries("country", "state");
+    
+    $('#interestsField').selectize({
+        plugins: ['remove_button'],
+        persist: false,
+        create: true,
+        render: {
+            item: function(data, escape) {
+                return '<div>"' + escape(data.text) + '"</div>';
+            }
+        },
+        onDelete: function(values) {
+            return confirm(values.length > 1 ? 'Are you sure you want to remove these ' + values.length + ' items?' : 'Are you sure you want to remove "' + values[0] + '"?');
+        }
+    });
+</script>

@@ -33,6 +33,16 @@
                     }
                 }
             })
+            .state('home.confirm', {
+                url: 'confirm',
+                views: {
+                    'content@': {
+                        templateUrl: 'confirm/confirm.tpl.html',
+                        controller: 'ConfirmController',
+                        controllerAs: 'vm'
+                    }
+                }
+            })
             ;
     }
 })();
