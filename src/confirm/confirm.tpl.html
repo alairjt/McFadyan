@@ -58,21 +58,21 @@
                         <div class="col-md-12">
                             <label for="address" class="control-label">Adress: {{vm.data.adress}}</label>
                             <!-- The two Home Address -->
-                            <div id="addressHome" class="form-horizontal animated fadeInDown" ng-if='vm.data.home'>
-                                <div class="form-group">
-                                    <label class="col-xs-12 control-label">1<sup>st</sup>&nbsp; Home Address: {{vm.data.home}}</label>
+                            <div id="addressHome" class="form-horizontal animated fadeInDown">
+                                <div ng-if='vm.data.home'>
+                                    <label class="control-label">1<sup>st</sup>&nbsp; Home Address: {{vm.data.home}}</label>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-xs-12 control-label">2<sup>nd</sup>&nbsp; Home Address: {{vm.data.home2}}</label>
+                                <div ng-if='vm.data.home2'>
+                                    <label class="control-label">2<sup>nd</sup>&nbsp; Home Address: {{vm.data.home2}}</label>
                                 </div>
                             </div>
                             <!-- the two company address -->
-                            <div id="addressCompany" class="form-horizontal animated fadeInDown" style="display: none;">
-                                <div class="form-group">
-                                    <label class="col-xs-12 control-label">1<sup>st</sup>&nbsp; Company Address: {{vm.data.company}}</label>
+                            <div id="addressCompany" class="form-horizontal animated fadeInDown">
+                                <div ng-if='vm.data.company'>
+                                    <label class="control-label">1<sup>st</sup>&nbsp; Company Address: {{vm.data.company}}</label>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-xs-12 control-label">2<sup>nd</sup>&nbsp; Company Address: {{vm.data.company2}}</label>
+                                <div ng-if='vm.data.company2'>
+                                    <label class="control-label">2<sup>nd</sup>&nbsp; Company Address: {{vm.data.company2}}</label>
                                 </div>
                             </div>
                         </div>
